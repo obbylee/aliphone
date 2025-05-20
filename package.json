@@ -5,13 +5,16 @@
   "scripts": {
     "build": "react-router build",
     "dev": "bunx --bun vite",
-    "start": "react-router-serve ./build/server/index.js",
+    "start": "bun ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@hono/trpc-server": "^0.3.4",
     "@radix-ui/react-slot": "^1.2.2",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
+    "@trpc/client": "^11.1.2",
+    "@trpc/server": "^11.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "isbot": "^5.1.27",

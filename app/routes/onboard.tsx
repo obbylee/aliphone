@@ -2,6 +2,7 @@ import type { Route } from "./+types/onboard";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 import { Search } from "lucide-react";
+import { trpc } from "~/client";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -11,10 +12,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function clientLoader({ params }: Route.LoaderArgs) {
-  const response = await fetch("/trpc");
-  const product = await response.json();
-  console.log(product);
-  return product;
+  const res = await trpc.hello.query();
+  console.log(res);
+  return [];
 }
 
 export default function Route({ loaderData }: Route.ComponentProps) {
