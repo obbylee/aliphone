@@ -10,6 +10,13 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+export async function clientLoader({ params }: Route.LoaderArgs) {
+  const response = await fetch("/trpc");
+  const product = await response.json();
+  console.log(product);
+  return product;
+}
+
 export default function Route({ loaderData }: Route.ComponentProps) {
   return (
     <main className="py-24 md:py-36 h-screen">
