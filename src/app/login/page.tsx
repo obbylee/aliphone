@@ -18,7 +18,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { GalleryVerticalEnd, Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const formLoginSchema = z.object({
@@ -30,6 +30,7 @@ const formLoginSchema = z.object({
 });
 
 export default function LoginPage() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof formLoginSchema>>({
@@ -51,10 +52,9 @@ export default function LoginPage() {
           setIsLoading(true);
         },
         onSuccess: ctx => {
-          redirect("/");
+          router.push("/", { scroll: false });
         },
         onError: ctx => {
-          console.error(ctx.error.message);
           // display the error message
           toast.error(ctx.error.message);
           setIsLoading(false);

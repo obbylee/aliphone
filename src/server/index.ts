@@ -75,6 +75,41 @@ export const appRouter = router({
     }),
   },
   cart: {
+    getCart: protectedProcedure.query(async ({ ctx }) => {
+      const cart = await prisma.cart.findUnique({
+        where: { userId: ctx.session.user.id },
+        include: {
+          items: {
+            include: {
+              product: {
+                // Include product details for each item in the cart
+                select: {
+                  id: true,
+                  name: true,
+                  sku: true,
+                  price: true,
+                  imageUrl: true,
+                  stockQuantity: true,
+                  minimumOrderQuantity: true,
+                },
+              },
+            },
+          },
+        },
+      });
+
+      if (!cart) {
+        return {
+          id: null,
+          userId: "",
+          items: [],
+          createdAt: new Date().toLocaleDateString(),
+          updatedAt: new Date().toLocaleDateString(),
+        };
+      }
+
+      return cart;
+    }),
     addToCart: protectedProcedure
       .input(
         z.object({

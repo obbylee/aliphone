@@ -18,7 +18,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { GalleryVerticalEnd, Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const formRegisterSchema = z
@@ -37,6 +37,7 @@ const formRegisterSchema = z
   });
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof formRegisterSchema>>({
@@ -63,8 +64,7 @@ export default function RegisterPage() {
           setIsLoading(true);
         },
         onSuccess: ctx => {
-          //redirect to the dashboard or sign in page
-          redirect("/");
+          router.push("/", { scroll: false });
         },
         onError: ctx => {
           // display the error message

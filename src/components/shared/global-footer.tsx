@@ -1,3 +1,5 @@
+"use client";
+
 export default function GlobalFooter() {
   return (
     <footer className="bg-secondary text-secondary-foreground py-12 text-center">
