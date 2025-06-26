@@ -13,8 +13,9 @@ import { Minus, Plus, X } from "lucide-react";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { trpc } from "@/utils/trpc";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Schema for a single item in the cart
 const CartItemSchema = z.object({
@@ -135,7 +136,7 @@ export default function CartPage() {
                   <X className="h-4 w-4 text-muted-foreground hover:text-destructive" />
                 </Button>
                 <div className="flex items-center gap-4">
-                  <img
+                  <Image
                     src={field.imageUrl || ""}
                     alt={field.name}
                     className="w-20 h-20 object-contain rounded-md border border-border flex-shrink-0"

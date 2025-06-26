@@ -26,6 +26,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import GlobalFooter from "@/components/shared/global-footer";
 import GlobalHeader from "@/components/shared/global-header";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -104,7 +105,7 @@ export default function HomePage() {
                 <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="h-full flex flex-col justify-between">
                     <CardHeader className="relative pb-0">
-                      <img
+                      <Image
                         src="https://s.alicdn.com/@sc04/kf/H0b222c1919b94d2eb2cd4cbc0f564abbG.jpg_720x720q50.jpg"
                         alt="Latest iPhone Model"
                         className="w-full h-48 object-contain rounded-md mb-4"
@@ -138,7 +139,7 @@ export default function HomePage() {
                 <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="h-full flex flex-col justify-between">
                     <CardHeader className="relative pb-0">
-                      <img
+                      <Image
                         src="https://s.alicdn.com/@sc04/kf/H8169d232cfdd47649d4f26601f24f9315.jpg_720x720q50.jpg"
                         alt="Samsung Galaxy S25"
                         className="w-full h-48 object-contain rounded-md mb-4"
@@ -172,7 +173,7 @@ export default function HomePage() {
                 <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="h-full flex flex-col justify-between">
                     <CardHeader className="relative pb-0">
-                      <img
+                      <Image
                         src="https://s.alicdn.com/@sc04/kf/Hea386cbeb6ec4892b44d749c4b46fa442.jpg_720x720q50.jpg"
                         alt="Xiaomi Flagship"
                         className="w-full h-48 object-contain rounded-md mb-4"

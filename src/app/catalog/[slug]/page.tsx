@@ -5,6 +5,7 @@ import { CheckCircle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { caller } from "@/server";
 import AddToCartForm from "@/components/add-to-cart-form";
+import Image from "next/image";
 
 type Params = Promise<{ slug: string }>;
 
@@ -22,7 +23,7 @@ export default async function Page(props: { params: Params }) {
         <div className="flel flex-col md:grid md:grid-cols-12 border p-2 gap-2 rounded-md h-[300px] md:h-[400px]">
           <div className="hidden md:flex md:flex-col gap-4 md:col-span-2 items-center">
             <div className="bg-gray-100 dark:bg-gray-500 rounded-md h-20 w-20 overflow-hidden">
-              <img
+              <Image
                 alt={product?.name}
                 src={product?.imageUrl ?? "null"}
                 className="w-full h-full object-contain"
@@ -35,7 +36,7 @@ export default async function Page(props: { params: Params }) {
           </div>
 
           <div className="bg-gray-100 dark:bg-gray-500 rounded-md h-[280px] md:h-[380px] md:col-span-10 overflow-hidden">
-            <img
+            <Image
               alt={product?.name}
               src={product?.imageUrl || "null"}
               className="w-full h-full object-cover"

@@ -20,6 +20,7 @@ import { GalleryVerticalEnd, Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 const formRegisterSchema = z
   .object({
@@ -51,7 +52,7 @@ export default function RegisterPage() {
   });
 
   async function onSubmit(values: z.infer<typeof formRegisterSchema>) {
-    const result = await authClient.signUp.email(
+    await authClient.signUp.email(
       {
         email: values.email,
         password: values.password,
@@ -60,10 +61,10 @@ export default function RegisterPage() {
           "https://api.dicebear.com/9.x/adventurer-neutral/svg?seed=${response.name}&size=64",
       },
       {
-        onRequest: ctx => {
+        onRequest: () => {
           setIsLoading(true);
         },
-        onSuccess: ctx => {
+        onSuccess: () => {
           router.push("/", { scroll: false });
         },
         onError: ctx => {
@@ -73,6 +74,7 @@ export default function RegisterPage() {
         },
       }
     );
+    return;
   }
 
   return (
@@ -197,7 +199,7 @@ export default function RegisterPage() {
         </div>
       </div>
       <div className="bg-muted relative hidden lg:block">
-        <img
+        <Image
           src="https://img.freepik.com/free-photo/smartphones-shopping-bags_23-2147957620.jpg?ga=GA1.1.670213319.1722347658&semt=ais_hybrid&w=740"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"

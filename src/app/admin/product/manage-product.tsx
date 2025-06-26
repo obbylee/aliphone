@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   DialogClose,
   DialogContent,
@@ -128,9 +128,15 @@ export function ManageProduct({
     },
   });
 
+  const {
+    control: formControl,
+    handleSubmit: formHandleSubmit,
+    reset: formReset,
+  } = form;
+
   useEffect(() => {
     if (initialData) {
-      form.reset({
+      formReset({
         id: initialData.id,
         name: initialData.name,
         sku: initialData.sku,
@@ -144,7 +150,7 @@ export function ManageProduct({
       });
     } else {
       // Reset to empty values for a new product
-      form.reset({
+      formReset({
         name: "",
         sku: "",
         slug: "",
@@ -156,7 +162,7 @@ export function ManageProduct({
         categoryId: "",
       });
     }
-  }, [initialData, form.reset]);
+  }, [initialData, formReset]);
 
   const onSubmit = async (data: CreateProductFormValues) => {
     const payload = { ...data };
@@ -177,9 +183,9 @@ export function ManageProduct({
       </DialogHeader>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 py-4">
+        <form onSubmit={formHandleSubmit(onSubmit)} className="space-y-4 py-4">
           <FormField
-            control={form.control}
+            control={formControl}
             name="name"
             render={({ field }) => (
               <FormItem>
@@ -192,7 +198,7 @@ export function ManageProduct({
             )}
           />
           <FormField
-            control={form.control}
+            control={formControl}
             name="sku"
             render={({ field }) => (
               <FormItem>
@@ -206,7 +212,7 @@ export function ManageProduct({
           />
 
           <FormField
-            control={form.control}
+            control={formControl}
             name="slug"
             render={({ field }) => (
               <FormItem>
@@ -220,7 +226,7 @@ export function ManageProduct({
           />
 
           <FormField
-            control={form.control}
+            control={formControl}
             name="categoryId"
             render={({ field }) => (
               <FormItem>
@@ -249,7 +255,7 @@ export function ManageProduct({
           />
 
           <FormField
-            control={form.control}
+            control={formControl}
             name="description"
             render={({ field }) => (
               <FormItem>
@@ -268,7 +274,7 @@ export function ManageProduct({
 
           <div className="grid grid-cols-3 gap-4">
             <FormField
-              control={form.control}
+              control={formControl}
               name="price"
               render={({ field }) => (
                 <FormItem>
@@ -286,7 +292,7 @@ export function ManageProduct({
               )}
             />
             <FormField
-              control={form.control}
+              control={formControl}
               name="stockQuantity"
               render={({ field }) => (
                 <FormItem>
@@ -304,7 +310,7 @@ export function ManageProduct({
             />
 
             <FormField
-              control={form.control}
+              control={formControl}
               name="minimumOrderQuantity"
               render={({ field }) => (
                 <FormItem>
@@ -323,7 +329,7 @@ export function ManageProduct({
           </div>
 
           <FormField
-            control={form.control}
+            control={formControl}
             name="imageUrl"
             render={({ field }) => (
               <FormItem>

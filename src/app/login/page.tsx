@@ -20,6 +20,7 @@ import { GalleryVerticalEnd, Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 const formLoginSchema = z.object({
   email: z
@@ -42,16 +43,16 @@ export default function LoginPage() {
   });
 
   async function onSubmit(values: z.infer<typeof formLoginSchema>) {
-    const result = await authClient.signIn.email(
+    await authClient.signIn.email(
       {
         email: values.email,
         password: values.password,
       },
       {
-        onRequest: ctx => {
+        onRequest: () => {
           setIsLoading(true);
         },
-        onSuccess: ctx => {
+        onSuccess: () => {
           router.push("/", { scroll: false });
         },
         onError: ctx => {
@@ -61,6 +62,7 @@ export default function LoginPage() {
         },
       }
     );
+    return;
   }
 
   return (
@@ -148,7 +150,7 @@ export default function LoginPage() {
         </div>
       </div>
       <div className="bg-muted relative hidden lg:block">
-        <img
+        <Image
           src="https://img.freepik.com/free-photo/3d-illustration-smartphone-with-blank-white-screen-cardboard-boxes-e-commerce-shipping-service-concept_58466-14530.jpg?ga=GA1.1.670213319.1722347658&semt=ais_hybrid&w=740"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"

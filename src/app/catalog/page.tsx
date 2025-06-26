@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { caller } from "@/server";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { parseNumberParam } from "@/utils/parseNumber";
+import Image from "next/image";
 import Link from "next/link";
 
 type SearchParams = Promise<{
@@ -111,7 +112,7 @@ export default async function CatalogPage(props: {
             >
               <div className="bg-white dark:bg-black min-h-[490px] border border-gray-200 dark:border-gray-500 rounded-md p-4 shadow-sm">
                 <div className="bg-gray-100 rounded-md h-64">
-                  <img
+                  <Image
                     src={product.imageUrl || ""}
                     alt={product.name}
                     className="w-full h-full object-contain"
