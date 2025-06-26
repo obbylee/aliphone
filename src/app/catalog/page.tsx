@@ -111,12 +111,15 @@ export default async function CatalogPage(props: {
               scroll={false}
             >
               <div className="bg-white dark:bg-black min-h-[490px] border border-gray-200 dark:border-gray-500 rounded-md p-4 shadow-sm">
-                <div className="bg-gray-100 rounded-md h-64">
-                  <Image
-                    src={product.imageUrl || ""}
-                    alt={product.name}
-                    className="w-full h-full object-contain"
-                  />
+                <div className="relative bg-gray-100 rounded-md w-full h-64">
+                  {product.imageUrl && (
+                    <Image
+                      src={product.imageUrl}
+                      alt={product.name}
+                      fill={true}
+                      className="object-contain"
+                    />
+                  )}
                 </div>
                 <h3 className="text-lg md:text-xl truncate my-4">
                   <span>{product.slug}</span>

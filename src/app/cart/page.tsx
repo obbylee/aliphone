@@ -136,11 +136,16 @@ export default function CartPage() {
                   <X className="h-4 w-4 text-muted-foreground hover:text-destructive" />
                 </Button>
                 <div className="flex items-center gap-4">
-                  <Image
-                    src={field.imageUrl || ""}
-                    alt={field.name}
-                    className="w-20 h-20 object-contain rounded-md border border-border flex-shrink-0"
-                  />
+                  <div className="relative w-20 h-20 bg-gray-100 rounded-md border border-border flex-shrink-0 overflow-hidden">
+                    {field.imageUrl && (
+                      <Image
+                        src={field.imageUrl}
+                        alt={field.name}
+                        fill
+                        className="object-contain"
+                      />
+                    )}
+                  </div>
                   <div className="flex-grow">
                     <CardTitle className="text-lg font-semibold mb-1">
                       {field.name}

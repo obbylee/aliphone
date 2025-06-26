@@ -22,12 +22,15 @@ export default async function Page(props: { params: Params }) {
       <section className="mx-auto max-w-[1200px] p-4 grid gap-4 grid-cols-1 md:grid-cols-2">
         <div className="flel flex-col md:grid md:grid-cols-12 border p-2 gap-2 rounded-md h-[300px] md:h-[400px]">
           <div className="hidden md:flex md:flex-col gap-4 md:col-span-2 items-center">
-            <div className="bg-gray-100 dark:bg-gray-500 rounded-md h-20 w-20 overflow-hidden">
-              <Image
-                alt={product?.name}
-                src={product?.imageUrl ?? "null"}
-                className="w-full h-full object-contain"
-              />
+            <div className="relative bg-gray-100 dark:bg-gray-500 rounded-md h-20 w-20 overflow-hidden">
+              {product?.imageUrl && (
+                <Image
+                  alt={product?.name}
+                  src={product?.imageUrl}
+                  fill
+                  className="w-full h-full object-contain"
+                />
+              )}
             </div>
 
             <div className="bg-gray-100 dark:bg-gray-500 rounded-md h-20 w-20" />
@@ -35,12 +38,15 @@ export default async function Page(props: { params: Params }) {
             <div className="bg-gray-100 dark:bg-gray-500 rounded-md h-20 w-20" />
           </div>
 
-          <div className="bg-gray-100 dark:bg-gray-500 rounded-md h-[280px] md:h-[380px] md:col-span-10 overflow-hidden">
-            <Image
-              alt={product?.name}
-              src={product?.imageUrl || "null"}
-              className="w-full h-full object-cover"
-            />
+          <div className="relative bg-gray-100 dark:bg-gray-500 rounded-md h-[280px] md:h-[380px] md:col-span-10 overflow-hidden">
+            {product?.imageUrl && (
+              <Image
+                alt={product?.name}
+                src={product?.imageUrl}
+                fill
+                className="object-contain"
+              />
+            )}
           </div>
         </div>
 

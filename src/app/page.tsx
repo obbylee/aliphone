@@ -42,9 +42,7 @@ export default function HomePage() {
             </h1>
             <p className="text-lg sm:text-xl mb-10 md:mb-12 max-w-3xl mx-auto text-muted-foreground">
               Streamline your procurement process. Connect with verified
-              suppliers and access
-              <span className="font-semibold text-primary"></span>
-              on bulk phone orders, accessories, and more.
+              suppliers and access on bulk phone orders, accessories, and more.
             </p>
 
             <form
@@ -105,11 +103,14 @@ export default function HomePage() {
                 <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="h-full flex flex-col justify-between">
                     <CardHeader className="relative pb-0">
-                      <Image
-                        src="https://s.alicdn.com/@sc04/kf/H0b222c1919b94d2eb2cd4cbc0f564abbG.jpg_720x720q50.jpg"
-                        alt="Latest iPhone Model"
-                        className="w-full h-48 object-contain rounded-md mb-4"
-                      />
+                      <div className="relative w-full h-48 rounded-md mb-4 overflow-hidden">
+                        <Image
+                          src="https://s.alicdn.com/@sc04/kf/H0b222c1919b94d2eb2cd4cbc0f564abbG.jpg_720x720q50.jpg"
+                          alt="Latest iPhone Model"
+                          fill={true}
+                          className="object-contain"
+                        />
+                      </div>
                       <Badge
                         variant="default"
                         className="absolute top-4 left-4"
@@ -139,11 +140,14 @@ export default function HomePage() {
                 <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="h-full flex flex-col justify-between">
                     <CardHeader className="relative pb-0">
-                      <Image
-                        src="https://s.alicdn.com/@sc04/kf/H8169d232cfdd47649d4f26601f24f9315.jpg_720x720q50.jpg"
-                        alt="Samsung Galaxy S25"
-                        className="w-full h-48 object-contain rounded-md mb-4"
-                      />
+                      <div className="relative w-full h-48 rounded-md mb-4 overflow-hidden">
+                        <Image
+                          src="https://s.alicdn.com/@sc04/kf/H8169d232cfdd47649d4f26601f24f9315.jpg_720x720q50.jpg"
+                          alt="Samsung Galaxy S25"
+                          fill={true}
+                          className="object-contain"
+                        />
+                      </div>
                       <Badge
                         variant="outline"
                         className="absolute top-4 left-4"
@@ -173,11 +177,14 @@ export default function HomePage() {
                 <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="h-full flex flex-col justify-between">
                     <CardHeader className="relative pb-0">
-                      <Image
-                        src="https://s.alicdn.com/@sc04/kf/Hea386cbeb6ec4892b44d749c4b46fa442.jpg_720x720q50.jpg"
-                        alt="Xiaomi Flagship"
-                        className="w-full h-48 object-contain rounded-md mb-4"
-                      />
+                      <div className="relative w-full h-48 rounded-md mb-4 overflow-hidden">
+                        <Image
+                          src="https://s.alicdn.com/@sc04/kf/Hea386cbeb6ec4892b44d749c4b46fa442.jpg_720x720q50.jpg"
+                          alt="Xiaomi Flagship"
+                          fill={true}
+                          className="object-contain"
+                        />
+                      </div>
                     </CardHeader>
                     <CardContent className="pt-6 flex-grow">
                       <CardTitle className="text-xl font-semibold mb-2">
